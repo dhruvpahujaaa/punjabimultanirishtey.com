@@ -48,12 +48,6 @@ const Footer = () => {
               >
                 Why Choose Us
               </a>
-              <Link
-                to="/profiles"
-                className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Browse Profiles
-              </Link>
             </div>
           </div>
 
