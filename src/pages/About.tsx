@@ -38,24 +38,24 @@ const values = [
 
 const team = [
     {
-        name: "Sh. Ramesh Kumar Arora",
+        name: "Mr. Vipul Pahuja",
         role: "Founder & Director",
         desc:
-            "With over 25 years of experience in community matchmaking, Sh. Ramesh Kumar Arora established PunjabiMultaniRishtey.com with a singular vision — to bring trust, dignity, and authenticity back to matrimonial matchmaking for Punjabi and Multani families worldwide.",
+            "With over 35 years of experience in community matchmaking, Mr. Vipul Pahuja established PunjabiMultaniRishtey.com with a singular vision — to bring trust, dignity, and authenticity back to matrimonial matchmaking for Punjabi and Multani families worldwide.",
         initials: "RK",
     },
     {
-        name: "Smt. Sunita Arora",
+        name: "Mr. Dhruv Pahuja",
         role: "Co-Founder & Head of Verification",
         desc:
-            "A pillar of the organization, Smt. Sunita Arora personally oversees the verification process for every profile. Her meticulous attention to detail and deep empathy for families ensures only genuine, compatible profiles reach our members.",
+            "A pillar of the organization, Mr. Dhruv Pahuja personally oversees the verification process for every profile. Her meticulous attention to detail and deep empathy for families ensures only genuine, compatible profiles reach our members.",
         initials: "SA",
     },
     {
-        name: "Er. Amit Arora",
+        name: "Mr. Nikhil Pahuja",
         role: "Director – Operations & Technology",
         desc:
-            "Amit brings a decade of technology and operations expertise to the platform, ensuring a seamless, secure experience for every family. He drives our commitment to continuous improvement and modern, dignified matchmaking.",
+            "Mr. Nikhil Pahuja brings a decade of technology and operations expertise to the platform, ensuring a seamless, secure experience for every family. He drives our commitment to continuous improvement and modern, dignified matchmaking.",
         initials: "AA",
     },
 ];

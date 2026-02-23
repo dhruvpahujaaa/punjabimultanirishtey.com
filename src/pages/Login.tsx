@@ -1,13 +1,49 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import loginImage from "@/assets/login-wedding.png";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState<"phone" | "otp">("phone");
   const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  const [generatedOtp, setGeneratedOtp] = useState("");
+
+  const handleSendOtp = () => {
+    if (!phone || phone.length < 10) {
+      toast.error("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    // Generate a random 6-digit OTP
+    const mockOtp = Math.floor(100000 + Math.random() * 900000).toString();
+    setGeneratedOtp(mockOtp);
+    setStep("otp");
+
+    // Show OTP in top-right toast
+    toast.success(`Your OTP is: ${mockOtp}`, {
+      description: "Use this OTP to complete your login.",
+      duration: 30000, // stays visible for 30 seconds
+      position: "top-right",
+    });
+  };
+
+  const handleLogin = () => {
+    if (otp === generatedOtp) {
+      toast.success("Login successful! Welcome back.", {
+        position: "top-right",
+      });
+      setTimeout(() => navigate("/profiles"), 1000);
+    } else {
+      toast.error("Incorrect OTP. Please try again.", {
+        position: "top-right",
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -19,7 +55,7 @@ const Login = () => {
           <h2 className="font-heading text-4xl font-bold text-card mb-3">
             Your Perfect Match Awaits
           </h2>
-          <p className="text-card/80 text-lg">Trusted by thousands of Punjabi & Multani families.</p>
+          <p className="text-card/80 text-lg">Trusted by thousands of Punjabi &amp; Multani families.</p>
         </div>
       </div>
 
@@ -32,35 +68,74 @@ const Login = () => {
 
           <div className="bg-card rounded-xl shadow-warm-lg p-8 border border-border/50">
             <h1 className="font-heading text-2xl font-bold text-foreground mb-2">Welcome Back</h1>
-            <p className="text-sm text-muted-foreground mb-8">Login to access your matches.</p>
+            <p className="text-sm text-muted-foreground mb-8">Login via your registered mobile number.</p>
 
             {step === "phone" ? (
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="phone" className="text-sm font-medium text-foreground">Mobile / Email</Label>
-                  <Input
-                    id="phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Enter mobile number or email"
-                    className="mt-1.5"
-                  />
+                  <Label htmlFor="phone" className="text-sm font-medium text-foreground">
+                    Mobile Number
+                  </Label>
+                  <div className="flex mt-1.5">
+                    <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-muted-foreground text-sm">
+                      +91
+                    </span>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                      placeholder="Enter 10-digit mobile number"
+                      className="rounded-l-none"
+                      maxLength={10}
+                    />
+                  </div>
                 </div>
-                <Button className="w-full" onClick={() => setStep("otp")}>
+                <Button className="w-full" onClick={handleSendOtp}>
                   Send OTP
                 </Button>
               </div>
             ) : (
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">OTP sent to <span className="font-medium text-foreground">{phone}</span></p>
-                <div>
-                  <Label htmlFor="otp" className="text-sm font-medium text-foreground">Enter OTP</Label>
-                  <Input id="otp" placeholder="6-digit OTP" className="mt-1.5" />
+                <div className="bg-primary/5 border border-primary/20 rounded-lg px-4 py-3">
+                  <p className="text-sm text-muted-foreground">
+                    OTP sent for{" "}
+                    <span className="font-semibold text-foreground">+91 {phone}</span>
+                  </p>
+                  <p className="text-xs text-primary mt-1">
+                    ℹ️ Check the notification at the top-right of your screen for the OTP.
+                  </p>
                 </div>
-                <Button className="w-full">Login</Button>
-                <button onClick={() => setStep("phone")} className="text-sm text-primary hover:underline w-full text-center">
-                  Change number
-                </button>
+                <div>
+                  <Label htmlFor="otp" className="text-sm font-medium text-foreground">
+                    Enter OTP
+                  </Label>
+                  <Input
+                    id="otp"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                    placeholder="6-digit OTP"
+                    className="mt-1.5 tracking-widest text-center text-lg font-bold"
+                    maxLength={6}
+                  />
+                </div>
+                <Button className="w-full" onClick={handleLogin}>
+                  Login
+                </Button>
+                <div className="flex items-center justify-between text-sm">
+                  <button
+                    onClick={() => { setStep("phone"); setOtp(""); setGeneratedOtp(""); }}
+                    className="text-primary hover:underline"
+                  >
+                    ← Change number
+                  </button>
+                  <button
+                    onClick={handleSendOtp}
+                    className="text-muted-foreground hover:text-foreground hover:underline"
+                  >
+                    Resend OTP
+                  </button>
+                </div>
               </div>
             )}
 

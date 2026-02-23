@@ -16,9 +16,9 @@ const Index = () => {
       <main>
         <HeroSection />
         <TrustStrip />
-        <WhyChooseUs />
-        <HowItWorks />
         <CulturalSection />
+        <HowItWorks />
+        <WhyChooseUs />
         <MembershipPlans />
         <Testimonials />
         <FinalCTA />
