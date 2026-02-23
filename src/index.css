@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 52% 95%;
+    --foreground: 3 28% 23%;
+
+    --card: 30 40% 97%;
+    --card-foreground: 3 28% 23%;
+
+    --popover: 30 40% 97%;
+    --popover-foreground: 3 28% 23%;
+
+    --primary: 14 76% 61%;
+    --primary-foreground: 30 52% 97%;
+
+    --secondary: 30 40% 90%;
+    --secondary-foreground: 3 28% 23%;
+
+    --muted: 30 30% 92%;
+    --muted-foreground: 3 15% 45%;
+
+    --accent: 46 69% 47%;
+    --accent-foreground: 30 52% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 30% 85%;
+    --input: 30 30% 85%;
+    --ring: 14 76% 61%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 30 40% 97%;
+    --sidebar-foreground: 3 28% 23%;
+    --sidebar-primary: 14 76% 61%;
+    --sidebar-primary-foreground: 30 52% 97%;
+    --sidebar-accent: 30 40% 93%;
+    --sidebar-accent-foreground: 3 28% 23%;
+    --sidebar-border: 30 30% 85%;
+    --sidebar-ring: 14 76% 61%;
+
+    --gold: 46 69% 47%;
+    --gold-light: 46 60% 75%;
+    --cream: 30 52% 95%;
+    --cream-dark: 30 40% 90%;
+    --peach: 14 76% 61%;
+    --peach-light: 14 70% 90%;
+    --brown-deep: 3 28% 23%;
+    --brown-medium: 3 20% 35%;
+
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .gold-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-peach-gradient {
+    background: linear-gradient(135deg, hsl(var(--peach)), hsl(14 70% 55%));
+  }
+
+  .bg-cream-subtle {
+    background: linear-gradient(180deg, hsl(var(--cream)), hsl(var(--cream-dark)));
+  }
+
+  .shadow-warm {
+    box-shadow: 0 4px 20px -4px hsl(var(--brown-deep) / 0.08);
+  }
+
+  .shadow-warm-lg {
+    box-shadow: 0 8px 30px -8px hsl(var(--brown-deep) / 0.12);
+  }
+}
