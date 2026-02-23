@@ -41,13 +41,12 @@ const Footer = () => {
               >
                 About Us
               </Link>
-              <a
-                href="/#why"
-                onClick={scrollToWhyChooseUs}
-                className="block text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              <Link
+                to="/why-choose-us"
+                className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Why Choose Us
-              </a>
+              </Link>
             </div>
           </div>
 

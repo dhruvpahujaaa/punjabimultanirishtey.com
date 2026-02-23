@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profiles from "./pages/Profiles";
 import About from "./pages/About";
+import WhyChooseUsPage from "./pages/WhyChooseUs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/register" element={<Register />} />
               <Route path="/profiles" element={<Profiles />} />
               <Route path="/about" element={<About />} />
+              <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </PageTransition>
