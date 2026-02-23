@@ -14,6 +14,7 @@ const Login = () => {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [generatedOtp, setGeneratedOtp] = useState("");
+  const [otpToastId, setOtpToastId] = useState<string | number | null>(null);
 
   const handleSendOtp = () => {
     if (!phone || phone.length < 10) {
@@ -26,16 +27,19 @@ const Login = () => {
     setGeneratedOtp(mockOtp);
     setStep("otp");
 
-    // Show OTP in top-right toast
-    toast.success(`Your OTP is: ${mockOtp}`, {
+    // Show OTP in top-right toast and save the ID
+    const id = toast.success(`Your OTP is: ${mockOtp}`, {
       description: "Use this OTP to complete your login.",
-      duration: 30000, // stays visible for 30 seconds
+      duration: 30000,
       position: "top-right",
     });
+    setOtpToastId(id);
   };
 
   const handleLogin = () => {
     if (otp === generatedOtp) {
+      // Dismiss the OTP toast immediately
+      if (otpToastId) toast.dismiss(otpToastId);
       login(phone);
       toast.success("Login successful! Welcome back.", {
         position: "top-right",
