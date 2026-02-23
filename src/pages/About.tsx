@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Heart, Shield, Users, Star, Award, Handshake } from "lucide-react";
 
@@ -212,19 +211,10 @@ const About = () => {
                             Join thousands of families who trust PunjabiMultaniRishtey.com for their most
                             important life decision.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex justify-center">
                             <Link to="/register">
                                 <Button size="lg" variant="secondary" className="font-semibold px-8">
                                     Start Free Registration
-                                </Button>
-                            </Link>
-                            <Link to="/profiles">
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    className="font-semibold px-8 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10"
-                                >
-                                    Browse Profiles
                                 </Button>
                             </Link>
                         </div>
@@ -232,7 +222,6 @@ const About = () => {
                 </section>
 
             </main>
-            <Footer />
         </div>
     );
 };
