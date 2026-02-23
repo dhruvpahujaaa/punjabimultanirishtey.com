@@ -1,12 +1,22 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
+import { toast } from "sonner";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { isLoggedIn, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    setMobileOpen(false);
+    toast.success("Logged out successfully.", { position: "top-right" });
+    navigate("/");
+  };
 
   const handleHome = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -67,16 +77,29 @@ const Header = () => {
           >
             Why Choose Us
           </a>
-          <Link to="/login">
-            <Button variant="ghost" size="sm" className="text-sm font-medium">
-              Login
+          {isLoggedIn ? (
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              size="sm"
+              className="text-sm font-medium flex items-center gap-2 border-primary/30 text-primary hover:bg-primary/5"
+            >
+              <LogOut className="w-4 h-4" /> Logout
             </Button>
-          </Link>
-          <Link to="/register">
-            <Button size="sm" className="text-sm font-semibold">
-              Free Registration
-            </Button>
-          </Link>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button variant="ghost" size="sm" className="text-sm font-medium">
+                  Login
+                </Button>
+              </Link>
+              <Link to="/register">
+                <Button size="sm" className="text-sm font-semibold">
+                  Free Registration
+                </Button>
+              </Link>
+            </>
+          )}
         </nav>
 
         {/* Mobile toggle */}
@@ -113,14 +136,26 @@ const Header = () => {
           >
             Why Choose Us
           </a>
-          <div className="flex flex-col gap-3 mt-4">
-            <Link to="/login" onClick={() => setMobileOpen(false)}>
-              <Button variant="outline" className="w-full">Login</Button>
-            </Link>
-            <Link to="/register" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full">Free Registration</Button>
-            </Link>
-          </div>
+          {isLoggedIn ? (
+            <div className="flex flex-col gap-3 mt-4">
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="w-full flex items-center gap-2 border-primary/30 text-primary"
+              >
+                <LogOut className="w-4 h-4" /> Logout
+              </Button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3 mt-4">
+              <Link to="/login" onClick={() => setMobileOpen(false)}>
+                <Button variant="outline" className="w-full">Login</Button>
+              </Link>
+              <Link to="/register" onClick={() => setMobileOpen(false)}>
+                <Button className="w-full">Free Registration</Button>
+              </Link>
+            </div>
+          )}
         </nav>
       )}
     </header>

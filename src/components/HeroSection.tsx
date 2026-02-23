@@ -40,11 +40,6 @@ const HeroSection = () => {
                   Start Free Registration
                 </Button>
               </Link>
-              <Link to="/profiles">
-                <Button variant="outline" size="lg" className="text-base font-semibold px-8 border-primary/30 text-foreground hover:bg-primary/5">
-                  Browse Verified Matches
-                </Button>
-              </Link>
             </div>
           </div>
 

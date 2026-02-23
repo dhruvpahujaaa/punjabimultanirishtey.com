@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { useAuth } from "@/context/AuthContext";
 import loginImage from "@/assets/login-wedding.png";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [step, setStep] = useState<"phone" | "otp">("phone");
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
@@ -34,6 +36,7 @@ const Login = () => {
 
   const handleLogin = () => {
     if (otp === generatedOtp) {
+      login(phone);
       toast.success("Login successful! Welcome back.", {
         position: "top-right",
       });
