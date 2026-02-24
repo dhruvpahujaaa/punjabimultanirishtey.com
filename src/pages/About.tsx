@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Heart, Shield, Users, Star, Award, Handshake } from "lucide-react";
+import aboutHeroImg from "@/assets/aboutus_image.jpg";
+import patternBg from "@/assets/elegant_neutral_wallpaper_design_background_1506.jpg";
 
 const values = [
     {
@@ -42,21 +45,21 @@ const team = [
         role: "Founder & Director",
         desc:
             "With over 35 years of experience in community matchmaking, Mr. Vipul Pahuja established PunjabiMultaniRishtey.com with a singular vision — to bring trust, dignity, and authenticity back to matrimonial matchmaking for Punjabi and Multani families worldwide.",
-        initials: "RK",
+        initials: "VP",
     },
     {
         name: "Mr. Dhruv Pahuja",
         role: "Co-Founder & Head of Verification",
         desc:
-            "A pillar of the organization, Mr. Dhruv Pahuja personally oversees the verification process for every profile. Her meticulous attention to detail and deep empathy for families ensures only genuine, compatible profiles reach our members.",
-        initials: "SA",
+            "A pillar of the organization, Mr. Dhruv Pahuja personally oversees the verification process for every profile. His meticulous attention to detail and deep empathy for families ensures only genuine, compatible profiles reach our members.",
+        initials: "DP",
     },
     {
         name: "Mr. Nikhil Pahuja",
         role: "Director – Operations & Technology",
         desc:
             "Mr. Nikhil Pahuja brings a decade of technology and operations expertise to the platform, ensuring a seamless, secure experience for every family. He drives our commitment to continuous improvement and modern, dignified matchmaking.",
-        initials: "AA",
+        initials: "NP",
     },
 ];
 
@@ -67,17 +70,24 @@ const About = () => {
             <main className="flex-1">
 
                 {/* Hero */}
-                <section className="bg-cream-subtle py-20 md:py-28">
-                    <div className="container max-w-4xl text-center">
-                        <span className="inline-block text-xs font-bold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-5 tracking-wide uppercase">
+                <section className="relative py-24 md:py-32 overflow-hidden">
+                    {/* Background Image with Overlay */}
+                    <div
+                        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
+                        style={{ backgroundImage: `url(${aboutHeroImg})` }}
+                    />
+                    <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-[1px]" />
+
+                    <div className="container relative z-20 max-w-4xl text-center">
+                        <span className="inline-block text-xs font-bold text-primary bg-primary/20 backdrop-blur-md rounded-full px-4 py-1.5 mb-5 tracking-wide uppercase border border-primary/30">
                             Our Story
                         </span>
-                        <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                        <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
                             Rooted in Culture.<br />
                             <span className="text-primary">Built on Trust.</span>
                         </h1>
-                        <div className="gold-divider w-24 mx-auto mb-8" />
-                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                        <div className="gold-divider w-24 mx-auto mb-8 h-1 bg-primary rounded-full" />
+                        <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto font-medium drop-shadow-md">
                             PunjabiMultaniRishtey.com was founded with a heartfelt mission — to provide
                             Punjabi, Multani, and Jhangi families with a dignified, verified, and deeply
                             personal matchmaking experience. We are not just a platform; we are a trusted
@@ -135,8 +145,17 @@ const About = () => {
                 </section>
 
                 {/* Meet the Team / Directors */}
-                <section className="py-20 md:py-24 bg-cream-subtle">
-                    <div className="container">
+                <section className="py-20 md:py-24 relative overflow-hidden">
+                    <div
+                        className="absolute inset-0 z-0 bg-repeat opacity-30 pointer-events-none"
+                        style={{
+                            backgroundImage: `url(${patternBg})`,
+                            backgroundSize: '300px',
+                            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+                            maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)'
+                        }}
+                    />
+                    <div className="container relative z-10">
                         <div className="text-center mb-14">
                             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
                                 Meet Our Directors
@@ -222,6 +241,7 @@ const About = () => {
                 </section>
 
             </main>
+            <Footer />
         </div>
     );
 };

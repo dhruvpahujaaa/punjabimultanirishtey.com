@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Crown, Gift } from "lucide-react";
+import patternBg from "@/assets/elegant_neutral_wallpaper_design_background_1506.jpg";
 
 const plans = [
   {
@@ -33,8 +34,17 @@ const plans = [
 
 const MembershipPlans = () => {
   return (
-    <section className="py-20 md:py-28 bg-cream-subtle" id="plans">
-      <div className="container">
+    <section className="py-12 md:py-16 relative overflow-hidden" id="plans">
+      <div
+        className="absolute inset-0 z-0 bg-repeat opacity-40 pointer-events-none"
+        style={{
+          backgroundImage: `url(${patternBg})`,
+          backgroundSize: '300px',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+          maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)'
+        }}
+      />
+      <div className="container relative z-10">
         <div className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Membership Plans
@@ -49,8 +59,8 @@ const MembershipPlans = () => {
             <div
               key={plan.name}
               className={`relative bg-card rounded-xl p-8 text-center shadow-warm transition-all hover:shadow-warm-lg hover:-translate-y-1 border ${plan.featured
-                  ? "border-gold ring-2 ring-gold/20 scale-105"
-                  : "border-border/50"
+                ? "border-gold ring-2 ring-gold/20 scale-105"
+                : "border-border/50"
                 }`}
             >
               {plan.tag && (

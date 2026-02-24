@@ -17,10 +17,10 @@ const Index = () => {
         <HeroSection />
         <TrustStrip />
         <CulturalSection />
+
         <HowItWorks />
-        <WhyChooseUs />
-        <MembershipPlans />
         <Testimonials />
+        <MembershipPlans />
         <FinalCTA />
       </main>
       <Footer />

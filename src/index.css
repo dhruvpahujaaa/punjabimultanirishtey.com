@@ -113,6 +113,14 @@
     animation: page-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
+  .bg-pattern-traditional {
+    background-color: #fffaf7;
+    background-image: url("https://www.transparenttextures.com/patterns/oriental-tiles.png");
+    /* More visible flowery mandala pattern */
+    background-attachment: fixed;
+    background-size: 350px;
+  }
+
   @keyframes page-enter {
     from {
       opacity: 0;

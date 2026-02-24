@@ -6,6 +6,8 @@ import {
     ShieldCheck, Users, Ban, ListChecks, Building2, UserCheck,
     PhoneCall, Star, Heart, Clock, Globe, Award
 } from "lucide-react";
+import whyChooseBg from "@/assets/Why_Choose_image.jpg";
+import patternBg from "@/assets/elegant_neutral_wallpaper_design_background_1506.jpg";
 
 const features = [
     {
@@ -108,8 +110,12 @@ const WhyChooseUsPage = () => {
             <main className="flex-1">
 
                 {/* Hero */}
-                <section className="bg-cream-subtle py-20 md:py-28">
-                    <div className="container max-w-4xl text-center">
+                <section className="py-20 md:py-28 relative overflow-hidden">
+                    <div
+                        className="absolute inset-0 z-0 bg-repeat opacity-40"
+                        style={{ backgroundImage: `url(${patternBg})`, backgroundSize: '300px' }}
+                    />
+                    <div className="container relative z-10 max-w-4xl text-center">
                         <span className="inline-block text-xs font-bold text-primary bg-primary/10 rounded-full px-4 py-1.5 mb-5 tracking-wide uppercase">
                             Why Us
                         </span>
@@ -174,16 +180,23 @@ const WhyChooseUsPage = () => {
                 </section>
 
                 {/* Testimonial Highlight */}
-                <section className="py-20 bg-cream-subtle">
-                    <div className="container max-w-3xl text-center">
-                        <div className="gold-divider w-24 mx-auto mb-10" />
-                        <blockquote className="font-heading text-2xl md:text-3xl italic text-foreground leading-relaxed mb-6">
+                <section className="relative py-24 md:py-32 overflow-hidden">
+                    {/* Background Image with Overlay */}
+                    <div
+                        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
+                        style={{ backgroundImage: `url(${whyChooseBg})` }}
+                    />
+                    <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-[2px]" />
+
+                    <div className="container relative z-20 max-w-3xl text-center">
+                        <div className="gold-divider w-24 mx-auto mb-10 h-1 bg-primary rounded-full" />
+                        <blockquote className="font-heading text-2xl md:text-4xl italic text-white leading-relaxed mb-6 drop-shadow-lg">
                             "Our family found the most compatible match within 2 weeks.
                             The verification gave us complete peace of mind."
                         </blockquote>
-                        <p className="font-semibold text-foreground">Kapoor Family</p>
-                        <p className="text-sm text-muted-foreground">Chandigarh, Punjab</p>
-                        <div className="gold-divider w-24 mx-auto mt-10" />
+                        <p className="font-semibold text-primary text-lg">Kapoor Family</p>
+                        <p className="text-sm text-white/80">Chandigarh, Punjab</p>
+                        <div className="gold-divider w-24 mx-auto mt-10 h-1 bg-primary rounded-full" />
                     </div>
                 </section>
 
